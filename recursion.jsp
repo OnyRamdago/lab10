@@ -82,7 +82,6 @@
         //TODO
         int fibonacci = 1;
 
-
         while (n > 0)
         {
             if (n == 1)
@@ -126,21 +125,26 @@
         public Tree(int value)
         {
             //TODO
+            this.value = value;
+            this.children = new ArrayList<Tree>();
         }
 
         public int getValue()
         {
             //TODO
+            return this.value;
         }
 
         public ArrayList<Tree> getChildren()
         {
             //TODO
+            return this.children;
         }
 
         public void add(Tree child)
         {
             //TODO
+            this.children.add(child);
         }
     }
 
@@ -170,8 +174,13 @@
         if (height == 1)
         {
             //TODO
+            return 0;
         }
         //TODO
+        else
+        {
+            return 1 + branchingFactor * nnaryTreeSize(branchingFactor, height - 1);
+        }
     }
 
     /**
@@ -185,6 +194,14 @@
     public int treeSum(Tree tree)
     {
         //TODO
+        int sum = tree.value;
+        for (Tree s : tree.children)
+        {
+
+            sum = sum + treeSum(s);
+        }
+
+        return sum;
     }
 
     /**
